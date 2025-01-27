@@ -1,0 +1,84 @@
+/* General reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Navigation styles */
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color:white;
+}
+
+nav a {
+  text-decoration: none;
+  color:black;
+  position: relative; /* Reference point for positioning the tooltip */
+  padding: 10px;
+  margin-top:20px;
+}
+
+
+/* Tooltip styles (common for all animations) */
+.tooltip {
+  display: none;
+  position: absolute;
+  top: -10px;  /* Position the tooltip above the navigation item */
+  left: 50%;
+  transform: translateX(-50%) scale(0);  /* Initially scale it down to 0 */
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;}
+  
+
+/* Triangle (arrow) styling for the tooltip */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* Position the arrow at the bottom of the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(0, 0, 0, 0.75); /* Arrow color matches the tooltip background */
+}
+
+/* Tooltip animations on hover */
+nav a:hover .tooltip {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) scale(1); /* Tooltip "grows" to full size */
+  visibility: visible;
+}
+
+/* 1. Fade-In Effect */
+nav a:hover .tooltip.fade-in {
+  opacity: 1;
+  transform: translateX(-50%) scale(1); /* Tooltip fades in and grows */
+}
+
+/* 2. Slide-In Effect (from below) */
+nav a:hover .tooltip.slide-in {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px); /* Tooltip slides in from below */
+}
+
+/* 3. Scale-In Effect */
+nav a:hover .tooltip.scale-in {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.2); /* Tooltip grows from smaller size */
+}
